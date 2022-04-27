@@ -1,0 +1,111 @@
+<%- include('partials/header.ejs') %>
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Details</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td colspan="2"><%= inventory.name %></td>
+      </tr>
+      <tr>
+        <td>Count</td>
+        <td colspan="2"><%= inventory.count %></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#update"
+          >
+            Update
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="deleteInventory('<%= inventory.id %>')"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="modal fade"
+    id="update"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="update">Update Inventory Item</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+            hidden
+          >
+            <strong>Succcess!</strong> Record Updated!.
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          <form action="" id="form">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                value="<%= inventory.name %>"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="count" class="form-label">Count</label>
+              <input
+                type="number"
+                class="form-control"
+                id="count"
+                name="count"
+                value="<%= inventory.count %>"
+              />
+            </div>
+            <input
+              type="hidden"
+              class=""
+              name="id"
+              value="<%= inventory.id %>"
+            />
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
