@@ -5,7 +5,6 @@
       <tr>
         <th scope="col">Item</th>
         <th scope="col">Details</th>
-        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +30,8 @@
           <button
             type="button"
             class="btn btn-danger"
-            onclick="deleteInventory('<%= inventory.id %>')"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
           >
             Delete
           </button>
@@ -100,7 +100,53 @@
               name="id"
               value="<%= inventory.id %>"
             />
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="delete"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="update">Delete Inventory Item</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="form-delete">
+            <div class="mb-3">
+              <label for="deletion-comment" class="form-label"
+                >Deletion Comment</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="deletion-comment"
+                name="deletion-comment"
+                value=""
+              />
+            </div>
+            <input
+              type="hidden"
+              class=""
+              name="id"
+              value="<%= inventory.id %>"
+            />
+            <button type="submit" class="btn btn-danger">Delete</button>
           </form>
         </div>
       </div>

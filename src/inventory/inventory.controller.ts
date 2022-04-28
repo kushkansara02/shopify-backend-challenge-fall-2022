@@ -54,7 +54,16 @@ export class InventoryController {
   }
 
   @Delete(':id')
-  async deleteInventory(@Param('id') id: string): Promise<InventoryModel> {
-    return this.inventoryService.deleteInventory({ id: Number(id) });
+  async deleteInventory(
+    @Param('id') id: string,
+    @Body() body: { deletionComment: string },
+  ): Promise<any> {
+    const deletion = await this.inventoryService.deleteInventory(
+      {
+        id: Number(id),
+      },
+      String(body.deletionComment),
+    );
+    return deletion;
   }
 }

@@ -1,10 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { ArchivedInventoryService } from '../archived_inventory/archived_inventory.service';
 import { Inventory, Prisma } from '@prisma/client';
 
 @Injectable()
 export class InventoryService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    @Inject(forwardRef(() => ArchivedInventoryService))
+    private readonly archivedInventoryService: ArchivedInventoryService,
+  ) {}
 
   async inventory(
     inventoryWhereUniqueInput: Prisma.InventoryWhereUniqueInput,
@@ -50,9 +55,16 @@ export class InventoryService {
 
   async deleteInventory(
     where: Prisma.InventoryWhereUniqueInput,
+    deletionComment: string,
   ): Promise<Inventory> {
-    return this.prisma.inventory.delete({
+    const deletion = await this.prisma.inventory.delete({
       where,
     });
+    await this.archivedInventoryService.createArchivedInventory({
+      deletionComment: deletionComment,
+      name: deletion.name,
+      count: deletion.count,
+    });
+    return deletion;
   }
 }

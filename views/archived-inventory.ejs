@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container-fluid mt-3">
+  <h4>Archived Inventory</h4>
+  <ol class="list-group list-group-numbered">
+    <% archivedInventory.forEach(data=>{ %>
+
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">
+          <a><%= data.name %></a>
+        </div>
+        <div>Count: <%= data.count %></div>
+        <div>Deletion Comment: <%= data.deletionComment %></div>
+      </div>
+      <span>
+        <button type="button" class="btn btn-danger" onclick="undeleteInventory('<%= data.id %>')">Undelete</button>
+    </li>
+    <% }) %>
+  </ol>
+</div>
+
+<%- include('partials/footer.ejs') %>

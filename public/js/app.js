@@ -21,15 +21,34 @@ function updateInventory() {
             window.location.reload();
           }, 3000);
         }
-      });
+      })
+      .then(() => (window.location.href = '/inventory'));
   });
 }
 
-async function deleteInventory(id) {
+async function deleteInventory() {
+  const deleteForm = document.getElementById('form-delete');
+  deleteForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = deleteForm['id'].value;
+    await fetch(`http://localhost:3000/inventory/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        deletionComment: deleteForm['deletion-comment'].value,
+      }),
+    }).then(() => (window.location.href = '/inventory'));
+  });
+}
+
+async function undeleteInventory(id) {
   console.log(id);
-  await fetch(`http://localhost:3000/inventory/${id}`, {
+  await fetch(`http://localhost:3000/archived-inventory/${id}`, {
     method: 'DELETE',
   }).then(() => (window.location.href = '/inventory'));
 }
 
 updateInventory();
+deleteInventory();

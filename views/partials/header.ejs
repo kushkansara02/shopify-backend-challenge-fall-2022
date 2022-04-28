@@ -16,17 +16,12 @@
   <body>
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/inventory">Inventory Storage</a>
-        <% if (page ==="inventory"){ %>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <div class="fw-bold">
+          <a href="/inventory">Inventory Storage</a>
+        </div>
+        <div class="fw-bold">
+          <a href="/archived-inventory">Archived Items</a>
+        </div>
         <button
           type="button"
           class="btn btn-primary"
@@ -35,7 +30,6 @@
         >
           Add New
         </button>
-        <% } %>
       </div>
     </nav>
   </body>
