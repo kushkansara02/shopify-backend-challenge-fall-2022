@@ -1,22 +1,12 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Render,
-  Param,
-  Delete,
-  Put,
-  Res,
-} from '@nestjs/common';
+import { Controller, Get, Render, Param, Delete } from '@nestjs/common';
 import { ArchivedInventoryService } from './archived_inventory.service';
 import { InventoryService } from '../inventory/inventory.service';
+import { app } from '../main';
 
 @Controller('archived-inventory')
 export class ArchivedInventoryController {
   constructor(
     private readonly archivedInventoryService: ArchivedInventoryService,
-    private readonly inventoryService: InventoryService,
   ) {}
 
   @Get(':id')
@@ -31,7 +21,11 @@ export class ArchivedInventoryController {
   async getAllArchivedInventory(): Promise<object> {
     const archivedInventory =
       await this.archivedInventoryService.archivedInventories({});
-    return { archivedInventory, page: 'archived-inventory' };
+    return {
+      archivedInventory,
+      page: 'archived-inventory',
+      url: await app.getUrl(),
+    };
   }
 
   @Delete(':id')

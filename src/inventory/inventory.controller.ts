@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { InventoryService } from './inventory.service';
 import { Inventory as InventoryModel } from '@prisma/client';
+import { app } from '../main';
 
 @Controller('inventory')
 export class InventoryController {
@@ -20,14 +21,14 @@ export class InventoryController {
   @Render('inventory-detail')
   async getInventoryById(@Param('id') id: string): Promise<object> {
     const inventory = await this.inventoryService.inventory({ id: Number(id) });
-    return { inventory, page: 'inventory' };
+    return { inventory, page: 'inventory', url: await app.getUrl() };
   }
 
   @Get()
   @Render('inventory')
   async getAllInventory(): Promise<object> {
     const inventory = await this.inventoryService.inventories({});
-    return { inventory, page: 'inventory' };
+    return { inventory, page: 'inventory', url: await app.getUrl() };
   }
 
   @Post()
