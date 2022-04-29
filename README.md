@@ -40,7 +40,16 @@ This will cause a popup to come on the screen, where you can add a new inventory
 
 # My Implementation
 
-I used the NestJS framework along with TypeScript to implement the MVC (Model-View-Controller) architecture. Additionally, I used Prisma as an ORM along with a PostgreSQL database hosted on Heroku. With these technologies, the backend code and database queries are type-safe and all data is validated.
+I used the NestJS framework along with TypeScript to implement the MVC (Model-View-Controller) architecture. Additionally, I used Prisma as an ORM along with a PostgreSQL database hosted on Heroku. With these technologies, the backend code and database queries are type-safe and all data is validated. Below are some other things to keep in mind:
+
+- Take a look at `prisma/schema.prisma` to understand the database schemas.
+- The count of an inventory item cannot be less than 0, so a negative input will always be changed to 0.
+- The price of an inventory item cannot be less than 0, so a negative input will always be changed to 0.
+- The name of each inventory item must be unique. If a new item is created with a name that already exists, nothing will be created.
+
+## Undeletion
+
+In my approach, there are two separate tables in the database: `Inventory` and `ArchivedInventory`. Whenever an inventory item in `Inventory` is deleted, it is moved to the `ArchivedInventory` table along with a deletion comment. When/if the item is undeleted, it is simply moved back. This way, querying for deleted and existing items is quick, since there are two separate tables. (i.e. we don't have to go through all of the deleted items if we want to get all the existing items)
 
 # API Endpoints Documentation
 

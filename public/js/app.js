@@ -13,6 +13,7 @@ function updateInventory() {
       body: JSON.stringify({
         name: createForm['name'].value,
         count: createForm['count'].value,
+        price: createForm['price'].value,
       }),
     })
       .then((data) => data.json())

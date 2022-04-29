@@ -3,8 +3,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Item</th>
-        <th scope="col">Details</th>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+        <th scope="col">Price</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,10 @@
       <tr>
         <td>Count</td>
         <td colspan="2"><%= inventory.count %></td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td colspan="2"><%= inventory.price %></td>
       </tr>
       <tr>
         <td colspan="2"></td>
@@ -92,6 +97,18 @@
                 id="count"
                 name="count"
                 value="<%= inventory.count %>"
+                oninput="javascript: if (this.value < 0) this.value = 0;"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                name="price"
+                value="<%= inventory.price %>"
+                oninput="javascript: if (this.value < 0) this.value = 0;"
               />
             </div>
             <input

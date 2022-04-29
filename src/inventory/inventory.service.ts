@@ -64,6 +64,7 @@ export class InventoryService {
       deletionComment: deletionComment,
       name: deletion.name,
       count: deletion.count,
+      price: deletion.price,
     });
     return deletion;
   }

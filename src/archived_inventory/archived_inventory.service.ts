@@ -64,6 +64,7 @@ export class ArchivedInventoryService {
     await this.inventoryService.createInventory({
       name: archive.name,
       count: archive.count,
+      price: archive.price,
     });
     return archive;
   }

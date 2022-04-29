@@ -48,24 +48,42 @@ export class InventoryController {
 
   @Post()
   async createInventory(
-    @Body() inventoryData: { name: string; count: number },
+    @Body() inventoryData: { name: string; count: number; price: number },
     @Res() res,
   ): Promise<any> {
-    await this.inventoryService.createInventory({
+    const exists = await this.inventoryService.inventory({
       name: inventoryData.name,
-      count: Number(inventoryData.count),
     });
+    if (!exists) {
+      inventoryData.count = Number(inventoryData.count);
+      if (inventoryData.count < 0) {
+        inventoryData.count = 0;
+      }
+      inventoryData.price = Number(inventoryData.price);
+      if (inventoryData.price < 0) {
+        inventoryData.price = 0;
+      }
+      await this.inventoryService.createInventory(inventoryData);
+    }
     return res.redirect('/inventory');
   }
 
   @Put(':id')
   async updateInventory(
     @Param('id') id: string,
-    @Body() inventory: { name: string; count: number },
+    @Body() inventory: { name: string; count: number; price: number },
   ): Promise<InventoryModel> {
+    inventory.count = Number(inventory.count);
+    if (inventory.count < 0) {
+      inventory.count = 0;
+    }
+    inventory.price = Number(inventory.price);
+    if (inventory.price < 0) {
+      inventory.price = 0;
+    }
     return this.inventoryService.updateInventory({
       where: { id: Number(id) },
-      data: { name: inventory.name, count: Number(inventory.count) },
+      data: inventory,
     });
   }
 

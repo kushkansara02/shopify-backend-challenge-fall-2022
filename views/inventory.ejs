@@ -18,57 +18,6 @@
     <% }) %>
   </ol>
 </div>
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="staticBackdrop"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Add Inventory Item</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form action="" id="createForm" method="post">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input
-              required
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Inventory Unit"
-              name="name"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="count" class="form-label">Count</label>
-            <input
-              required
-              type="number"
-              class="form-control"
-              id="count"
-              name="count"
-              placeholder="1"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 <input type="hidden" id="url" value="<%= url %>" />
 <input type="hidden" id="proto" value="<%= proto %>" />
 <%- include('partials/footer.ejs') %>
