@@ -25,8 +25,7 @@ function updateInventory() {
             window.location.reload();
           }, 3000);
         }
-      })
-      .then(() => (window.location.href = `/inventory/${id}`));
+      });
   });
 }
 
@@ -55,6 +54,10 @@ async function undeleteInventory(id) {
   await fetch(`${proto}://${url}/archived-inventory/${id}`, {
     method: 'DELETE',
   }).then(() => (window.location.href = '/inventory'));
+}
+
+async function redirectUpdate(id) {
+  window.location.href = `/inventory/${id}`;
 }
 
 updateInventory();
