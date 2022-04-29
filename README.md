@@ -45,10 +45,10 @@ I used the NestJS framework along with TypeScript to implement the MVC (Model-Vi
 - The count of an inventory item cannot be less than 0, so a negative input will always be changed to 0.
 - The price of an inventory item cannot be less than 0, so a negative input will always be changed to 0.
 - The name of each inventory item must be unique. If a new item is created with a name that already exists, nothing will be created.
-  - Similarly, lets say we have an existing inventory item called `Books`. If there's also an archived inventory item called `Books` and we try to undelete it, then:
+  - Lets say we have an existing inventory item called `Books`. If there's also an archived inventory item called `Books` and we try to undelete it, then:
     1. The item in the existing inventory will be unchanged.
     2. The item in the archived inventory will be deleted.
-  - The above is also true for moving items from existing inventory to archived inventory
+  - The above is also true vice versa - when deleting an existing item with the same name as an archived inventory item.
 
 ## Undeletion
 
