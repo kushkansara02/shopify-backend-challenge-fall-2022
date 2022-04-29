@@ -1,10 +1,11 @@
 function updateInventory() {
   const createForm = document.getElementById('form');
+  const id = createForm['id'].value;
+  const url = document.getElementById('url').value;
+  const proto = document.getElementById('proto').value;
   createForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const id = createForm['id'].value;
-    const url = document.getElementById('url').value;
-    const proto = document.getElementById('proto').value;
+
     await fetch(`${proto}://${url}/inventory/${id}`, {
       method: 'Put',
       headers: {
@@ -25,7 +26,7 @@ function updateInventory() {
           }, 3000);
         }
       })
-      .then(() => (window.location.href = '/inventory'));
+      .then(() => (window.location.href = `/inventory/${id}`));
   });
 }
 
