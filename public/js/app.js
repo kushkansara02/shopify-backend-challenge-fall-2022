@@ -21,9 +21,6 @@ function updateInventory() {
       .then((res) => {
         if (res) {
           document.querySelector('.alert').removeAttribute('hidden');
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
         }
       });
   });
