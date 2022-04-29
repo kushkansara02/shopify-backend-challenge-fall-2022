@@ -4,23 +4,21 @@ The additional feature chosen was "when deleting, allow deletion comments and un
 
 NOTE: In this repository, the database connection URLs are hardcoded. I would not do this in a production environment. This is to allow easier evaluation, and to be able to easily run the code from Replit. Replit doesn't support .env files, but in a production environment, these values would likely be stored as environment variables instead.
 
-# Setup
+# Running the App
 
 ## Local
 
 1. `git clone` this repository
 2. Make sure `npm` is installed in your machine.
 3. Run `npm install` to install dependencies required for the application.
-4. Run `export proto=http` in shell.
-5. Run `npm run start` to start the application
-6. After running `npm run start`, you will see console output along the lines of `Application is running on: http://[hostname]:port`. Open that URL in your browser to access the web app.
+4. Run `npm run start:local` to start the application
+5. After running `npm run start`, you will see console output along the lines of `Application is running on: http://[hostname]:port`. Open that URL in your browser to access the web app.
 
 ## Replit
 
 1. Run `npm install` to install dependencies required for the application.
-2. Run `export proto=https` in shell.
-3. Run `npm run start` to start the application
-4. After running `npm run start`, replit will automatically open a window with the web application running.
+2. Run `npm run start` to start the application
+3. After running `npm run start`, replit will automatically open a window with the web application running.
 
 # Usage
 
