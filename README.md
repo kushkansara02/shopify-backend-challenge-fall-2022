@@ -43,6 +43,7 @@ This will cause a popup to come on the screen, where you can add a new inventory
 I used the NestJS framework along with TypeScript to implement the MVC (Model-View-Controller) architecture. Additionally, I used Prisma as an ORM along with a PostgreSQL database hosted on Heroku. With these technologies, the backend code and database queries are type-safe and all data is validated. Below are some other things to keep in mind:
 
 - Take a look at `prisma/schema.prisma` to understand the database schemas.
+- I have prepopulated the database with some sample data.
 - The count of an inventory item cannot be less than 0, so a negative input will always be changed to 0.
 - The price of an inventory item cannot be less than 0, so a negative input will always be changed to 0.
 - The name of each inventory item must be unique. If a new item is created with a name that already exists, nothing will be created.
