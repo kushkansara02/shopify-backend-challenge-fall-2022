@@ -6,12 +6,14 @@ NOTE: In this repository, the database connection URLs are hardcoded. I would no
 
 # Running the App
 
+Note: the commands below must be run in a bash terminal.
+
 ## Local
 
 1. `git clone` this repository
 2. Make sure `npm` is installed in your machine.
-3. Run `npm install` to install dependencies required for the application.
-4. Run `npm run start:local` to start the application
+3. Run `npm install` in the project root directory to install dependencies required for the application.
+4. Run `npm run start:local` in the project root directory to start the application
 5. After running `npm run start:local`, you will see console output along the lines of `Application is running on: http://[hostname]:port`. Open that URL in your browser to access the web app.
 
 ## Replit
