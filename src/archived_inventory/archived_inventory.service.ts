@@ -39,9 +39,13 @@ export class ArchivedInventoryService {
   async createArchivedInventory(
     data: Prisma.ArchivedInventoryCreateInput,
   ): Promise<ArchivedInventory> {
-    return this.prisma.archivedInventory.create({
-      data,
-    });
+    const exists = await this.archivedInventory({ name: data.name });
+    if (!exists) {
+      return this.prisma.archivedInventory.create({
+        data,
+      });
+    }
+    return exists;
   }
 
   async updateArchivedInventory(params: {

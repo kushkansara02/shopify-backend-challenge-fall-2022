@@ -48,6 +48,7 @@ I used the NestJS framework along with TypeScript to implement the MVC (Model-Vi
   - Similarly, lets say we have an existing inventory item called `Books`. If there's also an archived inventory item called `Books` and we try to undelete it, then:
     1. The item in the existing inventory will be unchanged.
     2. The item in the archived inventory will be deleted.
+  - The above is also true for moving items from existing inventory to archived inventory
 
 ## Undeletion
 
