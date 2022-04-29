@@ -13,6 +13,7 @@ import {
 import { InventoryService } from './inventory.service';
 import { Inventory as InventoryModel } from '@prisma/client';
 import { Request } from 'express';
+import { env } from 'process';
 
 @Controller('inventory')
 export class InventoryController {
@@ -29,7 +30,7 @@ export class InventoryController {
       inventory,
       page: 'inventory',
       url: req.headers.host,
-      proto: req.protocol,
+      proto: env['proto'],
     };
   }
 
@@ -41,7 +42,7 @@ export class InventoryController {
       inventory,
       page: 'inventory',
       url: req.headers.host,
-      proto: req.protocol,
+      proto: env['proto'],
     };
   }
 

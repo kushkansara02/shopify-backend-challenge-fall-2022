@@ -1,6 +1,7 @@
 import { Controller, Get, Render, Param, Delete, Req } from '@nestjs/common';
 import { ArchivedInventoryService } from './archived_inventory.service';
 import { Request } from 'express';
+import { env } from 'process';
 
 @Controller('archived-inventory')
 export class ArchivedInventoryController {
@@ -24,7 +25,7 @@ export class ArchivedInventoryController {
       archivedInventory,
       page: 'archived-inventory',
       url: request.headers.host,
-      proto: request.protocol,
+      proto: env['proto'],
     };
   }
 
