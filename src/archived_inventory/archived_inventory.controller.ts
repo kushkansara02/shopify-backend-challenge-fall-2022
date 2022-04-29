@@ -24,6 +24,7 @@ export class ArchivedInventoryController {
       archivedInventory,
       page: 'archived-inventory',
       url: request.headers.host,
+      proto: request.protocol,
     };
   }
 

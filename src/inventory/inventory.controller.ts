@@ -25,14 +25,24 @@ export class InventoryController {
     @Req() req: Request,
   ): Promise<object> {
     const inventory = await this.inventoryService.inventory({ id: Number(id) });
-    return { inventory, page: 'inventory', url: req.headers.host };
+    return {
+      inventory,
+      page: 'inventory',
+      url: req.headers.host,
+      proto: req.protocol,
+    };
   }
 
   @Get()
   @Render('inventory')
   async getAllInventory(@Req() req: Request): Promise<object> {
     const inventory = await this.inventoryService.inventories({});
-    return { inventory, page: 'inventory', url: req.headers.host };
+    return {
+      inventory,
+      page: 'inventory',
+      url: req.headers.host,
+      proto: req.protocol,
+    };
   }
 
   @Post()
