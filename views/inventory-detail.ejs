@@ -61,6 +61,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
+            onclick="redirectUpdate('<%= inventory.id %>')"
           ></button>
         </div>
         <div class="modal-body">
@@ -69,13 +70,12 @@
             role="alert"
             hidden
           >
-            <strong>Succcess!</strong> Record Updated!.
+            <strong>Succcess!</strong> Record Updated!
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="alert"
               aria-label="Close"
-              onclick="redirectUpdate('<%= inventory.id %>')"
             ></button>
           </div>
           <form action="" id="form">
