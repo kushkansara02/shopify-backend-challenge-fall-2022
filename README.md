@@ -16,7 +16,7 @@ NOTE: In this repository, the database connection URLs are hardcoded. I would no
 
 ## Replit
 
-1. Run `npm run start:replit` to start the application (or click on the `Run` button at the top of the screen)
+1. Run `npm run start:replit` in the shell to start the application (or click on the `Run` button at the top of the screen)
    - Replit has its own package manager for Node, and the Replit project should already have it set up. If necessary, `npm install` will get all the dependencies for the app.
 2. After running `npm run start:replit`, replit will automatically open a window with the web application running.
 
