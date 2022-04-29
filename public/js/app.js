@@ -4,7 +4,7 @@ function updateInventory() {
     e.preventDefault();
     const id = createForm['id'].value;
     const url = document.getElementById('url').value;
-    await fetch(`${url}/inventory/${id}`, {
+    await fetch(`http://${url}/inventory/${id}`, {
       method: 'Put',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ async function deleteInventory() {
     e.preventDefault();
     const id = deleteForm['id'].value;
     const url = document.getElementById('url').value;
-    await fetch(`${url}/inventory/${id}`, {
+    await fetch(`http://${url}/inventory/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ async function deleteInventory() {
 
 async function undeleteInventory(id) {
   const url = document.getElementById('url').value;
-  await fetch(`${url}/archived-inventory/${id}`, {
+  await fetch(`http://${url}/archived-inventory/${id}`, {
     method: 'DELETE',
   }).then(() => (window.location.href = '/inventory'));
 }

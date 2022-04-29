@@ -1,7 +1,6 @@
-import { Controller, Get, Render, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Render, Param, Delete, Req } from '@nestjs/common';
 import { ArchivedInventoryService } from './archived_inventory.service';
-import { InventoryService } from '../inventory/inventory.service';
-import { app } from '../main';
+import { Request } from 'express';
 
 @Controller('archived-inventory')
 export class ArchivedInventoryController {
@@ -18,13 +17,13 @@ export class ArchivedInventoryController {
 
   @Get()
   @Render('archived-inventory')
-  async getAllArchivedInventory(): Promise<object> {
+  async getAllArchivedInventory(@Req() request: Request): Promise<object> {
     const archivedInventory =
       await this.archivedInventoryService.archivedInventories({});
     return {
       archivedInventory,
       page: 'archived-inventory',
-      url: await app.getUrl(),
+      url: request.headers.host,
     };
   }
 

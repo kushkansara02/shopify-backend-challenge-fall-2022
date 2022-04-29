@@ -8,10 +8,11 @@ import {
   Delete,
   Put,
   Res,
+  Req,
 } from '@nestjs/common';
 import { InventoryService } from './inventory.service';
 import { Inventory as InventoryModel } from '@prisma/client';
-import { app } from '../main';
+import { Request } from 'express';
 
 @Controller('inventory')
 export class InventoryController {
@@ -19,16 +20,19 @@ export class InventoryController {
 
   @Get(':id')
   @Render('inventory-detail')
-  async getInventoryById(@Param('id') id: string): Promise<object> {
+  async getInventoryById(
+    @Param('id') id: string,
+    @Req() req: Request,
+  ): Promise<object> {
     const inventory = await this.inventoryService.inventory({ id: Number(id) });
-    return { inventory, page: 'inventory', url: await app.getUrl() };
+    return { inventory, page: 'inventory', url: req.headers.host };
   }
 
   @Get()
   @Render('inventory')
-  async getAllInventory(): Promise<object> {
+  async getAllInventory(@Req() req: Request): Promise<object> {
     const inventory = await this.inventoryService.inventories({});
-    return { inventory, page: 'inventory', url: await app.getUrl() };
+    return { inventory, page: 'inventory', url: req.headers.host };
   }
 
   @Post()
