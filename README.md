@@ -9,5 +9,6 @@ NOTE: In this repository, I have included the .env file for ease of access to th
 1. `git clone` this repository
 2. Make sure `npm` is installed in your machine.
 3. Run `npm install` to install dependencies required for the application.
-4. Run `npm run start` to start the application
-5. After running `npm run start`, replit will automatically open a window with the web app open. If the app is being used locally, then open `http://localhost:3000` to view the web app.
+4. Run `export proto=https` in shell.
+5. Run `npm run start` to start the application
+6. After running `npm run start`, replit will automatically open a window with the web app open. If the app is being used locally, then open `http://localhost:3000` to view the web app.
