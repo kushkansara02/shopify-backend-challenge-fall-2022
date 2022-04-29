@@ -51,20 +51,16 @@ export class InventoryController {
     @Body() inventoryData: { name: string; count: number; price: number },
     @Res() res,
   ): Promise<any> {
-    const exists = await this.inventoryService.inventory({
-      name: inventoryData.name,
-    });
-    if (!exists) {
-      inventoryData.count = Number(inventoryData.count);
-      if (inventoryData.count < 0) {
-        inventoryData.count = 0;
-      }
-      inventoryData.price = Number(inventoryData.price);
-      if (inventoryData.price < 0) {
-        inventoryData.price = 0;
-      }
-      await this.inventoryService.createInventory(inventoryData);
+    inventoryData.count = Number(inventoryData.count);
+    if (inventoryData.count < 0) {
+      inventoryData.count = 0;
     }
+    inventoryData.price = Number(inventoryData.price);
+    if (inventoryData.price < 0) {
+      inventoryData.price = 0;
+    }
+    await this.inventoryService.createInventory(inventoryData);
+
     return res.redirect('/inventory');
   }
 

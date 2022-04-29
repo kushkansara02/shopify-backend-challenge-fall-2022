@@ -37,9 +37,13 @@ export class InventoryService {
   }
 
   async createInventory(data: Prisma.InventoryCreateInput): Promise<Inventory> {
-    return this.prisma.inventory.create({
-      data,
-    });
+    const exists = await this.inventory({ name: data.name });
+    if (!exists) {
+      return this.prisma.inventory.create({
+        data,
+      });
+    }
+    return exists;
   }
 
   async updateInventory(params: {
